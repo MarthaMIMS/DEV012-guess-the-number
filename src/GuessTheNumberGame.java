@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GuessTheNumberGame {
+    private Player player;
+    private Random random;
     private static int targetNumber;
   // private  static String playerName;
     private static ArrayList<String> userNumber;
+
+ /*  public GuessTheNumberGame(Player playerMock, Random randomMock) {
+    }*/
+
     public static void main(String[] args) {
          targetNumber = generatorNumber();
         System.out.println(targetNumber);
@@ -44,15 +50,13 @@ public class GuessTheNumberGame {
 
         System.out.println("Turno de " + playerName);
 
-
-        player.makeGuess();
-        String lastGuess = playerGuesses.getLast();
+        int lastGuess = player.makeGuess();
         System.out.println(playerName + ": Supuso " + lastGuess);
 
-        if (targetNumber > Integer.parseInt(lastGuess)) {
-            System.out.println("Digite un número mayor");
-        } else if (targetNumber < Integer.parseInt(lastGuess)) {
-            System.out.println("Digite un numero menor");
+        if (lastGuess > targetNumber) {
+            System.out.println("Digite un número menor");
+        } else if (lastGuess < targetNumber) {
+            System.out.println("Digite un numero mayor");
         } else {
             System.out.println("¡Felicidades, " + playerName + "! Has adivinado el número.");
             System.out.println("Historial de suposiciones:");

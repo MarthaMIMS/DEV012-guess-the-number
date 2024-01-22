@@ -1,7 +1,6 @@
 package src;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Computer extends Player {
     public String getName() {
@@ -9,11 +8,12 @@ public class Computer extends Player {
         return name;
     }
    @Override
-    public void makeGuess(){
+    public int makeGuess(){
         Random random = new Random();
        int guessComputer = random.nextInt(100)+1;
        addGuess(String.valueOf(guessComputer));
        // System.out.println( guessComputer);
 
-    }
+       return guessComputer;
+   }
 }

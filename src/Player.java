@@ -11,7 +11,7 @@ public abstract class Player {
     public String getName() {
         return name;
     }
-    public abstract void makeGuess();
+    public abstract int makeGuess();
 
     public ArrayList<String> getGuesses(){
      return guesses;
