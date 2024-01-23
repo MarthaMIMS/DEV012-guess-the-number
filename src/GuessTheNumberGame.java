@@ -7,14 +7,15 @@ public class GuessTheNumberGame {
     private Player player;
     private Random random;
     private static int targetNumber;
-  // private  static String playerName;
+    // private  static String playerName;
     private static ArrayList<String> userNumber;
 
- /*  public GuessTheNumberGame(Player playerMock, Random randomMock) {
-    }*/
+    public static void setTargetNumber(int number) {
+        targetNumber = number;
+    }
 
     public static void main(String[] args) {
-         targetNumber = generatorNumber();
+        targetNumber = generatorNumber();
         System.out.println(targetNumber);
 
         HumanPlayer usuario = new HumanPlayer();//Llame a humanPlayer y captura el nombre
@@ -22,8 +23,8 @@ public class GuessTheNumberGame {
         boolean humanTurn = true;
 
 
-       while (true) {
-         //  System.out.println("Turno de " + playerName);
+        while (true) {
+            //  System.out.println("Turno de " + playerName);
             if (humanTurn) {
                 if (!checkGuess(usuario)) {
                     break;  //
@@ -70,5 +71,4 @@ public class GuessTheNumberGame {
     }
 
 }
-
 

@@ -8,65 +8,72 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
-class GuessTheNumberGameTest {
+public class GuessTheNumberGameTest {
 
     @Test
     @DisplayName("Prueba cuando la suposición es mayor que el objetivo")
     public void testGreaterThanTarget() {
-        Player playerMock = Mockito.mock(Player.class);
-        Random randomMock = Mockito.mock(Random.class);
-        ArrayList<Integer> guessesList = new ArrayList<>();
-        int targetNumber = 80;
-        when(randomMock.nextInt(100)).thenReturn(targetNumber);
-        System.out.println(targetNumber);
-        // comportamiento esperado del jugador
-        when(playerMock.getGuesses()).thenReturn((ArrayList<String>) guessesList.stream().map(String::valueOf).collect(Collectors.toList()));
+        Player playerMock = mock(Player.class);
+        Random randomMock = mock(Random.class);
+
+        GuessTheNumberGame.setTargetNumber(40);
         when(playerMock.getName()).thenReturn("Irene");
-        //  devolver un número mayor que el objetivo
-        when(playerMock.makeGuess()).thenReturn(90);
-        // Ejecutar
-        assertFalse(GuessTheNumberGame.checkGuess(playerMock));
+
+        when(randomMock.nextInt(100)).thenReturn(50);
+        when(playerMock.makeGuess()).thenReturn(50);
+
+        assertTrue(GuessTheNumberGame.checkGuess(playerMock));
     }
     @Test
     @DisplayName("Prueba cuando la suposición es menor que el objetivo")
     public void testSmallerThanTarget() {
-        Player playerMock = Mockito.mock(Player.class);
-        Random randomMock = Mockito.mock(Random.class);
-        ArrayList<Integer> guessesList = new ArrayList<>();
-        int targetNumber = 80;
-        when(randomMock.nextInt(100)).thenReturn(targetNumber);
-        System.out.println(targetNumber);
-        //  comportamiento esperado del jugador
-        when(playerMock.getGuesses()).thenReturn((ArrayList<String>) guessesList.stream().map(String::valueOf).collect(Collectors.toList()));
+        Player playerMock = mock(Player.class);
+        Random randomMock = mock(Random.class);
+//Establecer el numero objetivo
+        GuessTheNumberGame.setTargetNumber(40);
         when(playerMock.getName()).thenReturn("Irene");
-        //  devolver un número menor que el objetivo
-        when(playerMock.makeGuess()).thenReturn(70);
-        // Ejecutar
-        assertTrue(GuessTheNumberGame.checkGuess(playerMock));
 
+        when(randomMock.nextInt(100)).thenReturn(30);
+
+        // Realizar la suposición
+        when(playerMock.makeGuess()).thenReturn(30);
+
+        // Utilizar el número objetivo configurado en la lógica del juego
+        assertTrue(GuessTheNumberGame.checkGuess(playerMock));
     }
     @Test
     @DisplayName("Prueba cuando la suposición es igual que el objetivo")
     public void testEqualThanTarget() {
-         Player playerMock = Mockito.mock(Player.class);
+        Player playerMock = mock(Player.class);
+        Random randomMock = mock(Random.class);
+
+        GuessTheNumberGame.setTargetNumber(40);
+        when(playerMock.getName()).thenReturn("Irene");
+
+        when(randomMock.nextInt(100)).thenReturn(40);
+        when(playerMock.makeGuess()).thenReturn(40);
+
+        assertFalse(GuessTheNumberGame.checkGuess(playerMock));
+    }
+/*@Test
+    @DisplayName("Random")
+    public void Randomtest(){
     Random randomMock = Mockito.mock(Random.class);
 
-    ArrayList<Integer> guessesList = new ArrayList<>();
 
-    int targetNumber = 80;
-    when(randomMock.nextInt(100)).thenReturn(targetNumber);
-    System.out.println(targetNumber);
+    when(randomMock.nextInt(100)).thenReturn(40);
 
-    when(playerMock.getGuesses()).thenReturn((ArrayList<String>) guessesList.stream().map(String::valueOf).collect(Collectors.toList()));
-    when(playerMock.getName()).thenReturn("Irene");
-    when(playerMock.makeGuess()).thenReturn(80);
+    // Utilizar el mock en la clase GuessTheNumberGame
+    GuessTheNumberGame randomGame = new GuessTheNumberGame();
+    int result = randomGame.generatorNumber();
 
-    assertTrue(GuessTheNumberGame.checkGuess(playerMock));
-    }
+
+    assertEquals(40, result);
+}*/
+
 }
 
