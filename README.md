@@ -4,7 +4,7 @@
 
 - [1. Introducción](#1-introduccion)
 - [2. Caracteristicas](#2-Caracteristicas)
-- [3. Estrucurura del proyecto](#3-estructura)
+- [3. Estructura del proyecto](#3-estructura)
 - [4. Ejecucion](#4-ejecucion)
 - [5. Pruebas Unitarias](#5-pruebas)
 - [6. Consideraciones Técnicas](#6-consideraciones-técnicas)
@@ -36,7 +36,7 @@ Guess The Number Game es un juego interactivo desarrollado en Java que se ejecut
 
 ## 4. Ejecución del Juego
 Para ejecutar el juego, simplemente compila y ejecuta el archivo principal `GuessTheNumberGame.java`. El juego proporcionará instrucciones en el terminal para que la jugadora realice suposiciones y recibirá retroalimentación sobre la dirección correcta.
-![Juego]()
+![Juego](https://github.com/MarthaMIMS/DEV012-guess-the-number/blob/main/GuessTheNumber.png)
 
 ## 5. Pruebas Unitarias
 El proyecto incluye pruebas unitarias para garantizar que las funciones clave del juego funcionen según lo esperado. Se han utilizado Mockito para crear mocks y realizar pruebas controladas.
